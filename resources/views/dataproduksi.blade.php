@@ -47,7 +47,7 @@
                 options: options
             });
         </script>
-        <div class= "w-50">
+        <div class= "w-60">
             <div class="container text centermt-5">
                 <h2>Total Produksi</h2>
             <main class="container">
