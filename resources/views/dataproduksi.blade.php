@@ -16,6 +16,51 @@
                 </div>
             </div>
         </div>
+        <script>
+            // Data produksi contoh (Anda dapat menggantinya dengan data sesuai kebutuhan)
+            var dataProduksi = [
+                { tanggal: '2023-09-01', produksiBulan: 1000, produksiTanggal: 50 },
+                { tanggal: '2023-09-02', produksiBulan: 1050, produksiTanggal: 45 },
+                // Tambahkan data produksi lainnya di sini
+            ];
+
+            // Fungsi untuk mengisi daftar bulan
+            function populateBulanList() {
+                var bulanList = document.getElementById('bulanList');
+                var uniqueBulan = [...new Set(dataProduksi.map(item => item.tanggal.slice(0, 7)))];
+
+                uniqueBulan.forEach(function (bulan) {
+                    var listItem = document.createElement('li');
+                    listItem.innerHTML = `<a href="#" onclick="showDetail('${bulan}')">${bulan}</a>`;
+                    bulanList.appendChild(listItem);
+                });
+            }
+
+            // Fungsi untuk menampilkan detail produksi per tanggal
+            function showDetail(bulan) {
+                var tanggalTable = document.getElementById('tanggalTable');
+                var filteredData = dataProduksi.filter(function (item) {
+                    return item.tanggal.startsWith(bulan);
+                });
+
+                var tableBody = tanggalTable.querySelector('tbody');
+                tableBody.innerHTML = '';
+
+                filteredData.forEach(function (item) {
+                    var row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${item.tanggal}</td>
+                        <td>${item.produksiTanggal}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            }
+
+            // Panggil fungsi untuk mengisi daftar bulan saat halaman dimuat
+            window.onload = function () {
+                populateBulanList();
+            };
+        </script>
 
         <script>
             // Data untuk grafik
@@ -50,6 +95,25 @@
         <div class= "w-60">
             <div class="container text centermt-5">
                 <h2>Total Produksi</h2>
+            </main>
+            <div class="my-3 p-3 bg-body rounded shadow-sm">
+                <h2>Data Produksi</h2>
+                <ul id="bulanList">
+                    <!-- Daftar bulan akan ditampilkan di sini -->
+                </ul>
+                <table id="tanggalTable" class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Tanggal</th>
+                            <th>Produksi per Tanggal</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Data produksi per tanggal akan ditampilkan di sini -->
+                    </tbody>
+                </table>
+            </div>
+
             <main class="container">
                 <!-- START FORM -->
                 <form action='' method='post'>
@@ -121,7 +185,7 @@
 
                    </div>
                    <!-- AKHIR DATA -->
-             </main>
+
         </div>
     </div>
 </div>
