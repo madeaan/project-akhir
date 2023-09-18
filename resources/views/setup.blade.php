@@ -82,6 +82,21 @@
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>
             </div>
+
+            <div class="d-flex flex-column col-6 my-auto">
+                <div class="container text centermt-5">
+                    <form>
+                        <div class="mb-3">
+                            <label for="berat-masuk" class="form-label">Berat daun Kelor Masuk (kg)</label>
+                            <input type="text" class="form-control" id="berat-masuk" placeholder="Input">
+                        </div>
+                        <div class="mb-3">
+                            <label for="berat-keluar" class="form-label">Berat daun Kelor Keluar (kg)</label>
+                            <input type="text" class="form-control" id="berat-keluar" placeholder="Input">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
         </div>
 
     </div>
